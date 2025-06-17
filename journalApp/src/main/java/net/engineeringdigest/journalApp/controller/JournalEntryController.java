@@ -32,4 +32,8 @@ public class JournalEntryController {
         journalEntries.put(myEntry.getId(), myEntry);
         return  true;
     }
+     public boolean deleteEntry(@RequestBody @Valid JournalEntry myEntry) {
+        journalEntries.put(myEntry.getId(), myEntry);
+        return  true;
+    }
 }
