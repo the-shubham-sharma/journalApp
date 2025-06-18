@@ -1,14 +1,10 @@
 package net.engineeringdigest.journalApp.controller;
 
 import net.engineeringdigest.journalApp.entity.JournalEntry;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+//import org.springframework.http.HttpStatus;
+//import org.springframework.http.ResponseEntity;
+//import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -28,12 +24,23 @@ public class JournalEntryController {
     }
 
     @PostMapping
-    public boolean createEntry(@RequestBody @Valid JournalEntry myEntry) {
+    public boolean createEntry(@RequestBody JournalEntry myEntry) {
         journalEntries.put(myEntry.getId(), myEntry);
-        return  true;
+        return true;
     }
-     public boolean deleteEntry(@RequestBody @Valid JournalEntry myEntry) {
-        journalEntries.put(myEntry.getId(), myEntry);
-        return  true;
+
+    @GetMapping("id/{myId}")
+    public JournalEntry getJournalEntryByID(@PathVariable Long myId){
+        return journalEntries.get(myId);
+    }
+    @DeleteMapping("id/{myId}")
+    public JournalEntry deleteJournalEntryByID(@PathVariable Long myId){
+        return journalEntries.remove(myId);
+    }
+
+    @PutMapping("/id/{id}")
+    public JournalEntry updateJournalById(@PathVariable Long id,@RequestBody JournalEntry myEntry){
+       return journalEntries.put(id,myEntry);
     }
 }
+
