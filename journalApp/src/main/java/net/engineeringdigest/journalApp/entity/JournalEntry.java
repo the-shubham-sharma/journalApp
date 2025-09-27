@@ -1,6 +1,9 @@
 package net.engineeringdigest.journalApp.entity;
 
+import java.time.LocalDateTime;
 import java.util.Date;
+
+import com.sun.corba.se.spi.ior.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -8,13 +11,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class JournalEntry {
 
     @Id
-    private String id;
+    private ObjectId id;
     private String title;
     private String  content;
     private Date date;
 
 
-    public String getId() {
+    public ObjectId getId() {
         return id;
     }
 
@@ -22,12 +25,12 @@ public class JournalEntry {
         return date;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDate(LocalDateTime date) {
+        date = date;
     }
 
 
-    public void setId(String id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
