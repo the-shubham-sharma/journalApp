@@ -5,7 +5,7 @@ public class JournalEntry {
     private long id;
     private String title;
     private String  content;
-
+   
     public long getId() {
         return id;
     }
