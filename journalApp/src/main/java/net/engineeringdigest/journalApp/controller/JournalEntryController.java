@@ -22,7 +22,7 @@ public class JournalEntryController {
     public List<JournalEntry> getAll() {
         return new ArrayList<>(journalEntries.values());
     }
-
+ 
     @PostMapping
     public boolean createEntry(@RequestBody JournalEntry myEntry) {
         journalEntries.put(myEntry.getId(), myEntry);
